@@ -1,15 +1,15 @@
 /* ===== FONTS ===== */
 @font-face {
-   font-family: 'Roboto Serif';
-   src: url('fonts/Roboto_Serif/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf') format('truetype');
+   font-family: "Roboto Serif";
+   src: url("fonts/Roboto_Serif/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf") format("truetype");
    font-weight: 100 900;
    font-style: normal;
    font-display: swap;
 }
 
 @font-face {
-   font-family: 'Roboto Serif';
-   src: url('fonts/Roboto_Serif/RobotoSerif-Italic-VariableFont_GRAD,opsz,wdth,wght.ttf') format('truetype');
+   font-family: "Roboto Serif";
+   src: url("fonts/Roboto_Serif/RobotoSerif-Italic-VariableFont_GRAD,opsz,wdth,wght.ttf") format("truetype");
    font-weight: 100 900;
    font-style: italic;
    font-display: swap;
@@ -20,8 +20,8 @@
    --text-color: #333;
    --background-color: #fff;
    --border-color: #333;
-   --link-color: #478CDB;
-   --shadow-color: rgba(0, 0, 0, 1.0);
+   --link-color: #478cdb;
+   --shadow-color: rgba(0, 0, 0, 1);
    --shadow-hover-color: rgba(0, 0, 0, 0.85);
 }
 
@@ -37,13 +37,14 @@
 }
 
 /* ===== BASE STYLES ===== */
-html, body {
+html,
+body {
    height: 100%;
    margin: 0;
 }
 
 body {
-   font-family: 'Roboto Serif', 'Times New Roman', Times, serif;
+   font-family: "Roboto Serif", "Times New Roman", Times, serif;
    margin: 0;
    padding: 0;
    color: var(--text-color);
@@ -54,7 +55,7 @@ body {
 
 /* ===== TYPOGRAPHY ===== */
 p {
-   font-size: 22px;
+   font-size: 19px;
    line-height: 1.5em;
 }
 
@@ -64,7 +65,7 @@ p > a {
 }
 
 h2 {
-   font-size: 28px;
+   font-size: 26px;
    font-weight: normal;
 }
 
@@ -79,7 +80,7 @@ h2 {
 }
 
 .animated-underline::after {
-   content: '';
+   content: "";
    position: absolute;
    bottom: 0;
    left: 0;
@@ -100,6 +101,37 @@ h2 {
    }
 }
 
+.cv-download {
+   display: inline-block;
+   margin-left: 16px;
+   padding: 0.25em 0.75em;
+   font-family: inherit;
+   font-size: 14px;
+   text-decoration: none;
+   color: var(--text-color);
+   border: 1px solid var(--border-color);
+   border-radius: 2px;
+   box-shadow: 2px 2px 0px var(--shadow-color);
+   vertical-align: middle;
+   transition:
+      box-shadow 0.15s ease,
+      transform 0.15s ease;
+}
+
+.cv-download::before {
+   content: "↓ ";
+}
+
+.cv-download:hover {
+   box-shadow: 0px 4px 4px var(--shadow-hover-color);
+   transform: translateY(-1px);
+}
+
+.cv-download:active {
+   box-shadow: none;
+   transform: translateY(1px);
+}
+
 /* ===== LAYOUT ===== */
 header {
    border-bottom: 1px solid var(--border-color);
@@ -110,7 +142,8 @@ header {
 
 header > h1 {
    font-weight: normal;
-   font-size: 48px;
+   font-size: 44px;
+   margin-bottom: 0.1em;
 }
 
 header > a img {
@@ -154,14 +187,36 @@ footer p {
    margin-bottom: 4em;
 }
 
+span.flag {
+   background: var(--shadow-color);
+   margin: 0.1em;
+   color: white;
+   padding: 0.1em 0.5em;
+   border-radius: 2px;
+   font-size: 0.75em;
+}
+
 .paper-preview {
    border: 1px solid var(--border-color);
    border-radius: 2px;
-   padding: 1em;
    display: grid;
    grid-template-rows: 1fr;
    gap: 0.5em;
    box-shadow: 2px 4px 0px var(--shadow-color);
+   height: 100%;
+}
+
+.position-subheading {
+   margin-top: 0;
+   font-weight: lighter;
+   font-style: italic;
+}
+
+.paper-meta {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   flex-grow: 1;
 }
 
 .paper-preview:hover {
@@ -173,15 +228,17 @@ footer p {
 .paper-preview h3,
 .paper-preview p {
    font-size: 17px;
-   margin-top: .2em;
-   margin-bottom: .2em;
+   margin-top: 0.2em;
+   margin-bottom: 0.2em;
 }
 
 .paper-preview a {
+   padding: 1em;
    display: block;
-   height: 100%;
    text-decoration: none;
    color: inherit;
+   display: flex;
+   flex-direction: column;
 }
 
 .paper-preview a:visited,
@@ -190,37 +247,144 @@ footer p {
    color: inherit;
 }
 
+/* ===── Award badges ─────────────────────────────────────────────────────── */
+.paper-awards {
+   display: flex;
+   flex-wrap: wrap;
+   gap: 0.4em;
+   margin-top: 0.5em;
+}
+
+.paper-award {
+   display: inline-flex;
+   align-items: center;
+   gap: 0.3em;
+   font-size: 0.75em;
+   font-style: italic;
+   color: #7a5500;
+   background: #fff8e1;
+   border: 1px solid #e6c55a;
+   border-radius: 2px;
+   padding: 0.15em 0.5em;
+}
+
+.paper-award::before {
+   content: "★";
+   font-style: normal;
+   font-size: 0.85em;
+   color: #c89a00;
+}
+
+@media (prefers-color-scheme: dark) {
+   .paper-award {
+      color: #f5d87a;
+      background: #2a2000;
+      border-color: #7a5f00;
+   }
+
+   .paper-award::before {
+      color: #f5c400;
+   }
+}
+
+/* Compact variant: inline, smaller, no top margin */
+.paper-list-item .paper-awards {
+   display: inline-flex;
+   margin-top: 0;
+   align-self: center;
+}
+
+.paper-list-item .paper-award {
+   font-size: 0.7em;
+   padding: 0.1em 0.4em;
+}
+
+/* ===── Compact paper list (x-paper) ─────────────────────────────────────── */
+.paper-list {
+   list-style: none;
+   padding: 0;
+   margin: 0 0 4em 0;
+}
+
+x-paper {
+   display: block;
+}
+
+.paper-list-item {
+   padding: 0.4em 0;
+}
+
+.paper-list-item:first-child {
+   border-top: 1px solid var(--border-color);
+}
+
+.paper-list-item a {
+   display: flex;
+   flex-direction: row;
+   align-items: baseline;
+   gap: 0.6em;
+   text-decoration: none;
+   color: inherit;
+   flex-wrap: wrap;
+}
+
+.paper-list-item a:visited,
+.paper-list-item a:hover,
+.paper-list-item a:active {
+   color: inherit;
+}
+
+.paper-list-item .paper-title {
+   font-size: 16px;
+   font-weight: 600;
+   flex: 1 1 auto;
+}
+
+.paper-list-item .paper-meta {
+   font-size: 14px;
+   color: #888;
+   display: flex;
+   gap: 0.4em;
+   flex-wrap: wrap;
+   align-items: baseline;
+}
+
+.paper-list-item .paper-venue-date {
+   white-space: nowrap;
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 768px) {
    header {
       margin: 0 20px;
    }
-   
+
    header > h1 {
       font-size: 32px;
+      margin-bottom: 0.1em;
    }
-   
+
    main {
       margin: 0 20px;
    }
-   
+
    footer {
       margin: 0 20px;
    }
-   
+
    p {
       font-size: 18px;
    }
-   
+
    h2 {
       font-size: 24px;
    }
-   
+
    .articles {
       grid-template-columns: 1fr;
       margin-bottom: 2em;
    }
-   
+
    .paper-preview h3,
    .paper-preview p {
       font-size: 15px;

@@ -1,63 +1,119 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Leon Schreiber</title>
+      <link rel="stylesheet" href="styles.css" />
+   </head>
 
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Leon Schreiber</title>
-   <link rel="stylesheet" href="styles.css">
-</head>
+   <body>
+      <header>
+         <h1>Hi, I'm Leon Schreiber</h1>
+         <h3 class="position-subheading">M.Sc. Student // Research Assisant</h3>
+         <a href="https://www.linkedin.com/in/leonschreiberdev"
+            ><img src="images/linkedin.svg" alt="LinkedIn Profile"
+         /></a>
+         <a href="https://github.com/leonschreiber96"><img src="images/github.svg" alt="GitHub Profile" /></a>
+         <a href="https://bsky.app/profile/leonschreiber96.bsky.social"
+            ><img src="images/bsky.svg" alt="BSky Profile"
+         /></a>
+         <a href="https://orcid.org/0009-0006-4023-4559">
+            <img src="images/orcid-dark.svg" alt="ORCID Profile" />
+         </a>
+         <a href="cv.pdf" download class="cv-download">Download CV</a>
+      </header>
 
-<body>
-   <header>
-      <h1>Hi, I'm Leon Schreiber</h1>
-      <a href="https://www.linkedin.com/in/leonschreiberdev"><img src="images/linkedin.svg" alt="LinkedIn Profile"></a>
-      <a href="https://github.com/leonschreiber96"><img src="images/github.svg" alt="GitHub Profile"></a>
-      <a href="https://bsky.app/profile/leonschreiber96.bsky.social"><img src="images/bsky.svg" alt="BSky Profile"></a>
-   </header>
+      <main>
+         <h2>About</h2>
+         <p>
+            I am a Research Assistant at the
+            <a href="https://www.tu.berlin/en/qu" class="animated-underline">Quality and Usability Lab</a> at Technische
+            Universität Berlin, supervised by
+            <a href="https://scholar.google.de/citations?user=BC_qcg0AAAAJ&hl=en" class="animated-underline"
+               >Prof. Sebastian Möller</a
+            >
+            and
+            <a href="https://scholar.google.de/citations?user=rJSa0ZMAAAAJ&hl=en" class="animated-underline"
+               >Jun.-Prof. Robert P. Spang</a
+            >. My work spans conversational systems, perceptual quality, and psychophysiological experiments. For my
+            Master's thesis, I am investigating how immersive virtual environments affect students' information
+            retention and learning outcomes.
+         </p>
 
-   <main>
-      <p>I am a <a href="https://scholar.google.com/citations?user=5FJqwYcAAAAJ&hl=en&oi=ao"
-            class="animated-underline">Researcher</a> at TU Berlin. You can contact me via e-mail: <a class="email-link"
-            href="mailto:leon.schreiber@tu-berlin.de">leon.schreiber@tu-berlin.de</a>.</p>
+         <p>
+            You can contact me via e-mail:
+            <a class="email-link" href="mailto:leon.schreiber@tu-berlin.de">leon.schreiber@tu-berlin.de</a>.
+         </p>
 
-      <h2>Recent Publications</h2>
-      <div class="articles">
-         <article class="paper-preview">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10598288">
-               <h3>Improving a Pupillometry Signal Through Video Luminance Modulation</h3>
-               <p>16th International Conference on Quality of Multimedia Experience</p>
-               <p>06/2024</p>
-            </a>
-         </article>
+         <h2>Publications</h2>
+         <!-- Publications are loaded from `papers.json`.
+              Papers with `"featured": true` are shown as cards in the grid.
+              All other papers appear as compact rows in the list below.
+         -->
+         <div class="articles" id="featured-papers" aria-live="polite"></div>
+         <ul class="paper-list" id="other-papers" aria-live="polite"></ul>
 
-         <article class="paper-preview">
-            <a href="https://ieeexplore.ieee.org/abstract/document/10598288">
-               <h3>Cognitive Fog under Elevated CO2:
-                  The Influence of Air Quality on
-                  Speech Quality Assessment and Response Behavior</h3>
-               <p>17th International Conference on Quality of Multimedia Experience</p>
-               <p>10/2025</p>
-            </a>
-         </article>
-      </div>
+         <script src="./components.js"></script>
+         <script type="module">
+            async function fetchPapers() {
+               const response = await fetch("papers.json", { cache: "no-cache" });
+               const data = await response.json();
+               return data.papers.sort((a, b) => {
+                  const da = a && a.date ? String(a.date) : "";
+                  const db = b && b.date ? String(b.date) : "";
+                  return db.localeCompare(da);
+               });
+            }
 
-      <p>Some of my free time is spent <a href="https://github.com/leonschreiber96"
-            class="animated-underline">coding</a> and doing <a href="/photography.html"
-            class="animated-underline">photography</a>.</p>
-      <p>Feel free to challenge me on <a href="https://lichess.org/@/licheeese" class="animated-underline">lichess</a>
-         (I am not a good chess
-         player).</p>
-   </main>
+            function setAttrs(el, paperData) {
+               el.setAttribute("title", paperData.title);
+               el.setAttribute("authors", paperData.authors.join(", "));
+               el.setAttribute("venue", paperData.venue);
+               el.setAttribute("date", paperData.date);
+               el.setAttribute("url", paperData.url);
+               el.setAttribute("first_author", paperData.first_author);
+               el.setAttribute("type", paperData.type);
+               if (paperData.pdf_url) el.setAttribute("pdf_url", paperData.pdf_url);
+               if (paperData.awards) el.setAttribute("awards", JSON.stringify(paperData.awards));
+            }
 
-   <footer>
-      <p>&copy; 2025 Leon Schreiber</p>
-      <p>
-         <a href="/imprint.html">Imprint</a> |
-         <a href="/privacy.html">Privacy Policy</a>
-      </p>
-   </footer>
+            const featuredContainer = document.getElementById("featured-papers");
+            const otherContainer = document.getElementById("other-papers");
 
-</body>
+            const papers = await fetchPapers();
 
+            for (const paper of papers) {
+               if (paper.featured) {
+                  const el = document.createElement("x-featured-paper");
+                  setAttrs(el, paper);
+                  featuredContainer.appendChild(el);
+               } else {
+                  const el = document.createElement("x-paper");
+                  setAttrs(el, paper);
+                  otherContainer.appendChild(el);
+               }
+            }
+         </script>
+
+         <!--<p>
+            Some of my free time is spent
+            <a href="https://github.com/leonschreiber96" class="animated-underline">coding</a> and doing
+            <a href="/photography.html" class="animated-underline">photography</a>.
+         </p>
+         <p>
+            Feel free to challenge me on
+            <a href="https://lichess.org/@/licheeese" class="animated-underline">lichess</a> (I am not a good chess
+            player).
+         </p>-->
+      </main>
+
+      <footer>
+         <p>&copy; 2025 Leon Schreiber</p>
+         <p>
+            <a href="/imprint.html">Imprint</a> |
+            <a href="/privacy.html">Privacy Policy</a>
+         </p>
+      </footer>
+   </body>
 </html>
