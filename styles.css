@@ -19,6 +19,7 @@
 :root {
    --text-color: #333;
    --background-color: #fff;
+   --hover-color: #eee;
    --border-color: #333;
    --link-color: #478cdb;
    --shadow-color: rgba(0, 0, 0, 1);
@@ -29,6 +30,7 @@
    :root {
       --text-color: #e0e0e0;
       --background-color: #1a1a1a;
+      --hover-color: #2b2b2b;
       --border-color: #555;
       --link-color: #7bb3f0;
       --shadow-color: rgba(255, 255, 255, 0.1);
@@ -274,10 +276,19 @@ span.flag {
 }
 
 .paper-award::before {
-   content: "★";
+   content: "";
+   display: inline-block;
+   width: 1.2em;
+   height: 1.2em;
    font-style: normal;
-   font-size: 0.85em;
-   color: #c89a00;
+   flex-shrink: 0;
+   background-color: #c89a00;
+   -webkit-mask-image: url("images/award-ribbon.svg");
+   mask-image: url("images/award-ribbon.svg");
+   -webkit-mask-repeat: no-repeat;
+   mask-repeat: no-repeat;
+   -webkit-mask-size: contain;
+   mask-size: contain;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -288,7 +299,7 @@ span.flag {
    }
 
    .paper-award::before {
-      color: #f5c400;
+      background-color: #f5c400;
    }
 }
 
@@ -317,10 +328,11 @@ x-paper {
 
 .paper-list-item {
    padding: 0.4em 0;
+   border-top: 1px solid var(--border-color);
 }
 
-.paper-list-item:first-child {
-   border-top: 1px solid var(--border-color);
+.paper-list-item:hover {
+   background-color: var(--hover-color);
 }
 
 .paper-list-item a {

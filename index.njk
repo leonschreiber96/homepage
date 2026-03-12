@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Leon Schreiber</title>
+      <link rel="stylesheet" href="styles.css" />
+   </head>
+
+   <body>
+      <header>
+         <h1>Hi, I'm Leon Schreiber</h1>
+         <h3 class="position-subheading">M.Sc. Student · Research Assistant · Berlin, DE</h3>
+         <a href="mailto:leon.schreiber@tu-berlin.de" target="_blank"
+            ><img src="images/email.svg" alt="Send E-Mail"
+         /></a>
+         <a href="https://www.linkedin.com/in/leonschreiberdev" target="_blank"
+            ><img src="images/linkedin.svg" alt="LinkedIn Profile"
+         /></a>
+         <a href="https://github.com/leonschreiber96" target="_blank"
+            ><img src="images/github.svg" alt="GitHub Profile"
+         /></a>
+         <a href="https://bsky.app/profile/leonschreiber96.bsky.social" target="_blank"
+            ><img src="images/bsky.svg" alt="BSky Profile"
+         /></a>
+         <a href="https://orcid.org/0009-0006-4023-4559" target="_blank"
+            ><img src="images/orcid-dark.svg" alt="ORCID Profile"
+         /></a>
+      </header>
+
+      <main>
+         <h2>About</h2>
+         <p>
+            I am a Research Assistant at the
+            <a href="https://www.tu.berlin/en/qu" target="_blank" class="animated-underline">Quality and Usability Lab</a>
+            at Technische Universität Berlin, supervised by
+            <a href="https://scholar.google.de/citations?user=BC_qcg0AAAAJ&hl=en" target="_blank" class="animated-underline">Prof. Sebastian Möller</a>
+            and
+            <a href="https://scholar.google.de/citations?user=rJSa0ZMAAAAJ&hl=en" target="_blank" class="animated-underline">Jun.-Prof. Robert P. Spang</a>.
+            I measure how humans perceive and respond to technology, through psychophysiological and subjective
+            measurements. For my Master's thesis, I am investigating how immersive virtual environments affect students'
+            information retention and learning outcomes.
+         </p>
+         <p>
+            I am increasingly interested in applying these methods to questions about Human-AI Interaction: how people
+            form mental models of AI systems, how conversational AI shapes behaviour and cognition, and how to evaluate
+            its societal and psychological impact. I am currently seeking PhD positions in this field — please feel free
+            to reach out at
+            <a class="email-link" href="mailto:leon.schreiber@tu-berlin.de">leon.schreiber@tu-berlin.de</a>.
+         </p>
+
+         <a href="cv.pdf" download class="cv-download">Download CV</a>
+
+         <h2>Research Interests</h2>
+         <p class="research-interests">
+            Human-Computer Interaction · Human-AI Interaction · XR · Psychophysiological Measurement · Societal Impact
+            of AI Systems
+         </p>
+
+         <h2>Publications</h2>
+         {% set sorted_papers = papers.papers | sort(attribute="date") | reverse %}
+
+         <div class="articles" id="featured-papers">
+            {% for paper in sorted_papers %}
+               {% if paper.featured %}
+                  <article class="paper-preview">
+                     <a class="paper-link" href="{{ paper.url }}">
+                        <h3 class="paper-title">{{ paper.title }}</h3>
+                        <span class="paper-authors">{{ paper.authors | join(', ') }}</span>
+                        <div class="paper-meta">
+                           <p class="paper-venue">{{ paper.venue }}</p>
+                           <p class="paper-date">{{ paper.date }}</p>
+                           {% if paper.first_author or paper.type %}
+                           <div class="paper-flags">
+                              {% if paper.first_author %}<span class="flag flag-first-author">First author</span>{% endif %}
+                              {% if paper.type %}<span class="flag flag-paper-type">{{ paper.type }}</span>{% endif %}
+                           </div>
+                           {% endif %}
+                        </div>
+                        {% if paper.awards %}
+                        <div class="paper-awards">
+                           {% for award in paper.awards %}<span class="paper-award">{{ award }}</span>{% endfor %}
+                        </div>
+                        {% endif %}
+                     </a>
+                  </article>
+               {% endif %}
+            {% endfor %}
+         </div>
+
+         <ul class="paper-list" id="other-papers">
+            {% for paper in sorted_papers %}
+               {% if not paper.featured %}
+                  <li class="paper-list-item">
+                     <a class="paper-link" href="{{ paper.url }}">
+                        {% if paper.first_author or paper.type %}
+                        <span class="paper-flags">
+                           {% if paper.first_author %}<span class="flag flag-first-author">First author</span>{% endif %}
+                           {% if paper.type %}<span class="flag flag-paper-type">{{ paper.type }}</span>{% endif %}
+                        </span>
+                        {% endif %}
+                        <span class="paper-title">{{ paper.title }}</span>
+                        <span class="paper-meta">
+                           <span class="paper-authors">{{ paper.authors | join(', ') }}</span>
+                           <span class="paper-venue-date">
+                              <span class="paper-venue">{{ paper.venue }}</span>{% if paper.venue and paper.date %}, {% endif %}<span class="paper-date">{{ paper.date }}</span>
+                           </span>
+                        </span>
+                        {% if paper.awards %}
+                        <span class="paper-awards">
+                           {% for award in paper.awards %}<span class="paper-award">{{ award }}</span>{% endfor %}
+                        </span>
+                        {% endif %}
+                     </a>
+                  </li>
+               {% endif %}
+            {% endfor %}
+         </ul>
+
+
+         <p>
+            Some of my free time is spent
+            <a href="https://github.com/leonschreiber96" class="animated-underline">coding</a> and doing
+            <a href="/photography.html" class="animated-underline">photography</a>.
+         </p>
+         <p>
+            Feel free to challenge me on
+            <a href="https://lichess.org/@/licheeese" class="animated-underline">lichess</a> (I am not a good chess
+            player).
+         </p>
+      </main>
+
+      <footer>
+         <p>&copy; 2025 Leon Schreiber</p>
+         <p>
+            <a href="/imprint.html">Imprint</a> |
+            <a href="/privacy.html">Privacy Policy</a>
+         </p>
+      </footer>
+   </body>
+</html>
