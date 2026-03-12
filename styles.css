@@ -69,34 +69,39 @@ h2 {
    font-weight: normal;
 }
 
+.research-interests {
+   font-size: 16px;
+   line-height: 2em;
+   color: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+   .research-interests {
+      color: #999;
+   }
+}
+
 .email-link {
    color: var(--text-color);
    text-decoration: underline;
 }
 
 .animated-underline {
-   position: relative;
    text-decoration: none;
+   background-image: linear-gradient(currentColor, currentColor);
+   background-position: 0% 100%;
+   background-repeat: no-repeat;
+   background-size: 0% 2px;
+   transition: background-size 0.3s ease;
 }
 
-.animated-underline::after {
-   content: "";
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   width: 0%;
-   height: 2px;
-   background-color: currentColor;
-   transition: width 0.3s ease;
-}
-
-.animated-underline:hover::after,
-.animated-underline:active::after {
-   width: 100%;
+.animated-underline:hover,
+.animated-underline:active {
+   background-size: 100% 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-   .animated-underline::after {
+   .animated-underline {
       transition: none;
    }
 }
