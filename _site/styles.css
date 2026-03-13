@@ -1,7 +1,7 @@
 /* ===== FONTS ===== */
 @font-face {
    font-family: "Roboto Serif";
-   src: url("fonts/Roboto_Serif/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf") format("truetype");
+   src: url("fonts/RobotoSerif.woff2") format("woff2");
    font-weight: 100 900;
    font-style: normal;
    font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
    font-family: "Roboto Serif";
-   src: url("fonts/Roboto_Serif/RobotoSerif-Italic-VariableFont_GRAD,opsz,wdth,wght.ttf") format("truetype");
+   src: url("fonts/RobotoSerif-Italic.woff2") format("woff2");
    font-weight: 100 900;
    font-style: italic;
    font-display: swap;
