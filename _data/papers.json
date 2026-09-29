@@ -1,21 +1,47 @@
 {
    "papers": [
       {
+         "id": "deval-mt2026",
+         "title": "DEval-MT: An Intersectional Gender Bias Evaluation Framework for German Machine Translation",
+         "authors": [
+            "Michelle Kappl",
+            "Leon Schreiber",
+            "Stefan Hillmann"
+         ],
+         "first_author": false,
+         "type": "Long Paper",
+         "venue": "The 7th Workshop on Gender Bias in Natural Language Processing",
+         "date": "2026-11"
+      },
+      {
          "id": "improving-pupillometry-2024",
          "title": "Improving a Pupillometry Signal Through Video Luminance Modulation",
-         "authors": ["Leon Schreiber", "Wafaa Wardah", "Vera Schmitt", "Sebastian Möller", "Robert P. Spang"],
+         "authors": [
+            "Leon Schreiber",
+            "Wafaa Wardah",
+            "Vera Schmitt",
+            "Sebastian Möller",
+            "Robert P. Spang"
+         ],
          "first_author": true,
          "type": "Long Paper",
          "venue": "16th International Conference on Quality of Multimedia Experience",
          "date": "2024-06",
          "url": "https://doi.org/10.1109/QoMEX61742.2024.10598288",
-         "awards": ["Best Innovative Idea"],
+         "awards": [
+            "Best Innovative Idea"
+         ],
          "featured": true
       },
       {
          "id": "gaze-in-the-machine-2025",
          "title": "Gaze in the Machine: The Paradox of Artificial Eye Contact in Video Calls",
-         "authors": ["Leonie Wichers", "Leon Schreiber", "Sebastian Möller", "Robert P. Spang"],
+         "authors": [
+            "Leonie Wichers",
+            "Leon Schreiber",
+            "Sebastian Möller",
+            "Robert P. Spang"
+         ],
          "first_author": false,
          "type": "Short Paper",
          "venue": "17th International Conference on Quality of Multimedia Experience",
@@ -26,7 +52,12 @@
       {
          "id": "depth-matters-2025",
          "title": "Depth Matters: Quality of Experience in Stereoscopic 3D versus Conventional 2D Video Telephony",
-         "authors": ["Robert P. Spang", "Mia Toom", "Leon Schreiber", "Sebastian Möller"],
+         "authors": [
+            "Robert P. Spang",
+            "Mia Toom",
+            "Leon Schreiber",
+            "Sebastian Möller"
+         ],
          "first_author": false,
          "type": "Short Paper",
          "venue": "17th International Conference on Quality of Multimedia Experience",
@@ -52,7 +83,9 @@
          "date": "2025-09",
          "url": "https://doi.org/10.1109/QoMEX65720.2025.11219970",
          "featured": true,
-         "awards": ["Best Poster Presentation"]
+         "awards": [
+            "Best Poster Presentation"
+         ]
       },
       {
          "id": "hear-the-echo-tool",
@@ -75,7 +108,12 @@
       {
          "id": "assessing-impact-echo",
          "title": "Assessing the Impact of Echo on Conversations in Real-Time Communication Systems",
-         "authors": ["Tugçe Melike Koçak Büyüktas", "Leon Schreiber", "Robert P. Spang", "Sebastian Möller"],
+         "authors": [
+            "Tugçe Melike Koçak Büyüktas",
+            "Leon Schreiber",
+            "Robert P. Spang",
+            "Sebastian Möller"
+         ],
          "first_author": false,
          "type": "Short Paper",
          "venue": "2025 DAS|DAGA 51st Annual Meeting on Acoustics",
