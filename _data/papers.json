@@ -11,7 +11,8 @@
          "first_author": false,
          "type": "Long Paper",
          "venue": "The 7th Workshop on Gender Bias in Natural Language Processing",
-         "date": "2026-11"
+         "date": "2026-11",
+         "url": "https://doi.org/10.18653/2026.gebnlp-1.13"
       },
       {
          "id": "improving-pupillometry-2024",
